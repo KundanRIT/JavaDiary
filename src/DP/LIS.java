@@ -35,6 +35,7 @@ public class LIS {
                 }
             }
         }
+
         int counter = 1;
         for (int i = 0; i < seq.length; i++) {
             if (seq[i] == counter) {
