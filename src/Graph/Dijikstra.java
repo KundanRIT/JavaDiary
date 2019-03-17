@@ -1,4 +1,5 @@
 package Graph;
 
-public class Dijikstra {
+public class Dijikstra
+{
 }
