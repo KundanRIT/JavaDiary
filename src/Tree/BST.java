@@ -5,7 +5,7 @@ public class BST {
     private TreeNode root;
     private int size = 0;
 
-    private void inOrderUtil(TreeNode root) {
+    public void inOrderUtil(TreeNode root) {
         if (root != null) {
             inOrderUtil(root.left);
             System.out.print(root.value + " ");
@@ -19,7 +19,7 @@ public class BST {
         System.out.println();
     }
 
-    private TreeNode insertUtil(TreeNode root, int val) {
+    public TreeNode insertUtil(TreeNode root, int val) {
         if (root == null) {
             root = new TreeNode(val);
             size++;
