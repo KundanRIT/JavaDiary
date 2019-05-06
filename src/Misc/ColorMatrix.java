@@ -1,5 +1,7 @@
 package Misc;
 
+import java.util.Stack;
+
 public class ColorMatrix {
     public static void main(String[] args) {
         int m[][] = {
@@ -16,7 +18,7 @@ public class ColorMatrix {
             for (int j=0; j<5; j++) {
                 int col = m[i][j];
                 if (!visited[i][j]) {
-                    int cnt = dfs(m, i, j, visited, col, 0);
+                    int cnt = dfsIter(m, i, j, visited, col, 0);
                     if (cnt > count) {
                         count = cnt;
                         color = col;
@@ -25,6 +27,13 @@ public class ColorMatrix {
             }
         }
         System.out.println("Color = "+color+" Count = "+count);
+//        System.out.println(dfsIter(m, 0, 0, visited, 1, 0));
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                System.out.print(visited[i][j] + "\t");
+//            }
+//            System.out.println();
+//        }
     }
 
     public static int dfs(int m[][], int i, int j, boolean visited[][], int color, int count) {
@@ -50,5 +59,46 @@ public class ColorMatrix {
             }
         }
         return count;
+    }
+
+    public static int dfsIter(int m[][], int i, int j, boolean visited[][], int color, int count) {
+        Stack<StackEntry> stack = new Stack<>();
+        stack.push(new StackEntry(i, j));
+        while (!stack.empty()) {
+            StackEntry s = stack.pop();
+            i = s.i;
+            j = s.j;
+            if (m[i][j] == color && !visited[i][j]) {
+                visited[i][j] = true;
+                count++;
+
+                if (i + 1 < 5 && !visited[i + 1][j]) {
+                    stack.push(new StackEntry(i+1, j));
+                }
+
+                if (j + 1 < 5 && !visited[i][j + 1]) {
+                    stack.push(new StackEntry(i, j+1));
+                }
+
+                if (i - 1 >= 0 && !visited[i - 1][j]) {
+                    stack.push(new StackEntry(i-1, j));
+                }
+
+                if (j - 1 >= 0 && !visited[i][j - 1]) {
+                    stack.push(new StackEntry(i, j-1));
+                }
+            }
+        }
+        return count;
+    }
+
+    static class StackEntry {
+        int i;
+        int j;
+
+        StackEntry(int i, int j) {
+            this.i = i;
+            this.j = j;
+        }
     }
 }
