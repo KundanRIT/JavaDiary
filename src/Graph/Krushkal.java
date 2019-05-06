@@ -1,6 +1,6 @@
 package Graph;
 
-public class DFS {
+public class Krushkal {
     public static void main(String[] args) {
         Graph g = new Graph("graph");
         g.addEdge("0", "1", 4);
@@ -17,9 +17,24 @@ public class DFS {
         g.addEdge("6", "5", 2);
         g.addEdge("3", "4", 9);
         g.addEdge("5", "4", 10);
+
+
     }
 
-    public static void dfs(String start, String end, Graph g) {
+    static class Edge implements Comparable<Edge> {
+        int weight;
+        String v1;
+        String v2;
 
+        public Edge(int weight, String v1, String v2) {
+            this.weight = weight;
+            this.v1 = v1;
+            this.v2 = v2;
+        }
+
+        @Override
+        public int compareTo(Edge o) {
+            return this.weight - o.weight;
+        }
     }
 }
