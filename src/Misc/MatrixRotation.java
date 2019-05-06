@@ -2,7 +2,7 @@ package Misc;
 
 public class MatrixRotation {
     public static void main(String[] args) {
-        int n = 4;
+        int n = 9;
         int m[][] = new int[n][n];
         int k = 0;
         for (int i = 0; i < n; i++) {
@@ -17,7 +17,7 @@ public class MatrixRotation {
             System.out.println();
         }
         System.out.println("-----------------------");
-        for (int i=0; i < (int)Math.sqrt(n); i++) {
+        for (int i = 0; i < n/2; i++) {
             for (int j=i; j < n-i-1; j++) {
                 int x = m[j][n-i-1];
                 m[j][n-i-1] = m[i][j];
