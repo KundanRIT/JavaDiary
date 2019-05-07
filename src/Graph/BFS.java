@@ -20,23 +20,20 @@ public class BFS {
         g.addEdge("3", "4", 9);
         g.addEdge("5", "4", 10);
 
-        bfs("0", "8", g);
+        bfs("0", "7", g);
     }
 
     public static void bfs(String start, String end, Graph g) {
         LinkedList<Vertex> queue = new LinkedList<>();
-        Set<String> visited = new HashSet<>();
         HashMap<String, String> connection = new HashMap<>();
-        visited.add(start);
         connection.put(start, null);
         queue.add(g.getVertex(start));
         boolean flag = false;
         while (!queue.isEmpty()) {
             Vertex pop = queue.pop();
             for (String v: pop.getConnections()) {
-                if (!visited.contains(v)) {
+                if (!connection.containsKey(v)) {
                     queue.addLast(g.getVertex(v));
-                    visited.add(v);
                     connection.put(v, pop.id);
                     if (v.equals(end)) {
                         flag = true;
@@ -47,7 +44,7 @@ public class BFS {
             if (flag)
                 break;
         }
-        if (visited.contains(end)) {
+        if (connection.containsKey(end)) {
             String current = end;
             while (current != null) {
                 System.out.print(current + " ");
