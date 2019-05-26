@@ -1,7 +1,5 @@
 package Misc;
 
-import java.util.Arrays;
-
 public class FrogJump {
     public static void main(String[] args) {
         int j[] = {3,2,1,0,4};

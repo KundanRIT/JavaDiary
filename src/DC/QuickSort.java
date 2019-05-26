@@ -32,7 +32,6 @@ public class QuickSort {
             }
         }
         swap(arr, i+1, high);
-        System.out.println(Arrays.toString(arr));
         return i+1;
     }
 
