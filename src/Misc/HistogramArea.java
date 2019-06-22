@@ -31,7 +31,6 @@ public class HistogramArea {
                 }
             }
         }
-        System.out.println(Arrays.toString(area));
         int max = area[0];
         for (int i = 1; i < area.length; i++) {
             if (max < area[i])

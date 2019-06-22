@@ -10,31 +10,30 @@ public class KReverse {
         linkedlist.prepend(5);
         linkedlist.prepend(6);
         linkedlist.prepend(7);
+        linkedlist.prepend(8);
         System.out.println(linkedlist);
-        linkedlist.head = new KReverse().reverseKGroup(linkedlist.head, 2);
+        linkedlist.head = new KReverse().reverseKGroup(linkedlist.head, 3);
         System.out.println(linkedlist);
     }
 
     public LinkedNode reverseKGroup(LinkedNode head, int k) {
         LinkedNode cursor = head;
         LinkedNode prev = null;
-        int move = 1;
+        LinkedNode next = null;
 
-        LinkedNode go = head;
-
-        while (cursor != null) {
-            if (move == k ){
-                LinkedNode temp = cursor.next;
-//                cursor.next = ;
-                prev = cursor;
-                cursor = temp;
-
-                move = 1;
-            } else {
-                cursor = cursor.next;
-                move++;
-            }
+        int count = 0;
+        while (count < k && cursor != null) {
+            next = cursor.next;
+            cursor.next = prev;
+            prev = cursor;
+            cursor = next;
+            count++;
         }
-        return head;
+
+        if (next != null) {
+            head.next = reverseKGroup(next, k);
+        }
+
+        return prev;
     }
 }

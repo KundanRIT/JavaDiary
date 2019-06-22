@@ -5,10 +5,10 @@ public class RemoveLastN {
         LinkedList<Integer> linkedlist = new LinkedList<Integer>();
         linkedlist.prepend(19);
         linkedlist.prepend(99);
-//        linkedlist.prepend(27);
-//        linkedlist.prepend(33);
-//        linkedlist.prepend(81);
-//        linkedlist.prepend(4);
+        linkedlist.prepend(27);
+        linkedlist.prepend(33);
+        linkedlist.prepend(81);
+        linkedlist.prepend(4);
         System.out.println(linkedlist);
 
         linkedlist.head = removeFromLastN(linkedlist.head, 2);
